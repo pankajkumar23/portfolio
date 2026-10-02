@@ -182,7 +182,7 @@
   <header class="hero" id="top">
     <div class="tag mono"><b>●</b> Software developer · Mohali, India</div>
     <h1 id="name" aria-label="Pankaj Kumar"><span class="l1">Pankaj</span><br><span class="l2">Kumar</span></h1>
-    <p class="lead">Full-stack developer working in React, Flask and Python at Code Garage Tech. I build <em id="swap">RAG pipelines</em>, and I can tell you which ad actually made the sale.</p>
+    <p class="lead">Full-stack developer working in React, Flask and Python at Code Garage Tech. I build <em id="swap">AI employees</em>, and I can tell you which ad actually made the sale.</p>
     <div class="cta">
       <a class="btn p" href="#attribution">Try the click demo</a>
       <a class="btn" href="#work">See my work</a>
@@ -276,7 +276,7 @@ document.querySelectorAll("#name span").forEach(sp => {
 });
 
 // ---------- rotating word ----------
-const words = ["RAG pipelines", "full-stack apps", "BigQuery reports", "attribution systems"];
+const words = ["AI employees", "voice agents", "RAG pipelines", "attribution systems"];
 let w = 0;
 setInterval(() => { w = (w + 1) % words.length; $("swap").textContent = words[w]; }, 2300);
 
@@ -366,9 +366,13 @@ renderSim();
 
 // ---------- projects ----------
 const PROJECTS = [
-  { t: "BidIQ", big: 1, d: "A bid-response tool that answers from a knowledge base instead of guessing. Voyage AI embeddings feed pgvector search, and Claude writes answers grounded in knowledge-base cards.",
+  { t: "AI Employees Platform", big: 1, d: "Small business owners wear every hat, but can't afford staff for each role. I built a platform of 9 AI employees that each handle one: executive assistant (email replies, junk filtering, calendar, meeting notes), social media manager, lead generation with cold outreach, website builder, SEO writer, receptionist, legal assistant, customer support and sales. About 90–95% of routine tasks are automated, so owners only step in on exceptions.",
+    stack: ["Next.js", "Node.js", "OpenAI", "AI Agents", "Gmail", "Outlook", "Google Calendar", "OAuth"] },
+  { t: "AI Voice Agent Platform", big: 1, d: "A no-code platform for inbound and outbound phone calls, for clinics, salons, dealerships, real estate and sales teams. Agents answer 24/7, book appointments, qualify leads and run campaigns for cold calls, follow-ups, renewals and surveys. Each agent has a prompt builder and a knowledge base from uploaded documents and websites, and hands off to a human when needed. Calls are recorded and transcribed with analytics, leads sync to HubSpot and GoHighLevel, and a white-label mode lets agencies resell it with subaccounts and client billing.",
+    stack: ["Next.js", "Retell AI", "Twilio", "OpenAI", "n8n", "Docker", "HubSpot", "GoHighLevel", "AI Agents", "Voice AI"] },
+  { t: "BidIQ", d: "A bid-response tool that answers from a knowledge base instead of guessing. Voyage AI embeddings feed pgvector search, and Claude writes answers grounded in knowledge-base cards.",
     stack: ["FastAPI", "pgvector", "RAG", "Claude", "PostgreSQL"] },
-  { t: "RemedAI", big: 1, d: "The AI platform and FastAPI backend behind the RemedAI mobile app.",
+  { t: "RemedAI", d: "The AI platform and FastAPI backend behind the RemedAI mobile app.",
     stack: ["FastAPI", "PostgreSQL", "RAG"] },
   { t: "Funnel platform", d: "An in-house funnel platform with admin apps and dashboards. Migrated the page builder from GrapesJS to Craft.js.",
     stack: ["React", "Next.js", "TypeScript"] },
