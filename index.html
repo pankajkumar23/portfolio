@@ -243,7 +243,7 @@
       <div class="tool"><h3>Backend</h3><p>Flask, FastAPI, MERN</p></div>
       <div class="tool"><h3>Frontend</h3><p>React, Next.js, Craft.js</p></div>
       <div class="tool"><h3>Data</h3><p>PostgreSQL, MySQL, Supabase, pgvector, BigQuery</p></div>
-      <div class="tool"><h3>AI</h3><p>RAG, Claude, Gemini / Vertex AI, Voyage AI</p></div>
+      <div class="tool"><h3>AI</h3><p>RAG, OpenAI, Gemini / Vertex AI, Voyage AI</p></div>
       <div class="tool"><h3>Cloud</h3><p>GCP, Vercel, DigitalOcean</p></div>
       <div class="tool"><h3>Marketing tech</h3><p>Shopify, Funnelish, GTM, Meta Pixel / CAPI, Google Ads data</p></div>
       <div class="tool"><h3>Integrations</h3><p>OAuth, Stripe, SSL / domain migrations</p></div>
@@ -281,7 +281,7 @@ let w = 0;
 setInterval(() => { w = (w + 1) % words.length; $("swap").textContent = words[w]; }, 2300);
 
 // ---------- marquee ----------
-const marqWords = ["Python", "FastAPI", "Flask", "React", "Next.js", "TypeScript", "PostgreSQL", "pgvector", "BigQuery", "Supabase", "RAG", "Claude", "Stripe", "OAuth", "GTM", "Shopify"];
+const marqWords = ["Python", "FastAPI", "Flask", "React", "Next.js", "TypeScript", "PostgreSQL", "pgvector", "BigQuery", "Supabase", "RAG", "OpenAI", "Gemini", "Stripe", "OAuth", "GTM", "Shopify"];
 $("track").innerHTML = [...marqWords, ...marqWords].map(s => `<span>${s}</span>`).join("");
 
 // ---------- particle network + cursor glow ----------
@@ -370,24 +370,22 @@ const PROJECTS = [
     stack: ["Next.js", "Node.js", "OpenAI", "AI Agents", "Gmail", "Outlook", "Google Calendar", "OAuth"] },
   { t: "AI Voice Agent Platform", big: 1, d: "A no-code platform for inbound and outbound phone calls, for clinics, salons, dealerships, real estate and sales teams. Agents answer 24/7, book appointments, qualify leads and run campaigns for cold calls, follow-ups, renewals and surveys. Each agent has a prompt builder and a knowledge base from uploaded documents and websites, and hands off to a human when needed. Calls are recorded and transcribed with analytics, leads sync to HubSpot and GoHighLevel, and a white-label mode lets agencies resell it with subaccounts and client billing.",
     stack: ["Next.js", "Retell AI", "Twilio", "OpenAI", "n8n", "Docker", "HubSpot", "GoHighLevel", "AI Agents", "Voice AI"] },
-  { t: "BidIQ", d: "A bid-response tool that answers from a knowledge base instead of guessing. Voyage AI embeddings feed pgvector search, and Claude writes answers grounded in knowledge-base cards.",
-    stack: ["FastAPI", "pgvector", "RAG", "Claude", "PostgreSQL"] },
-  { t: "RemedAI", d: "The AI platform and FastAPI backend behind the RemedAI mobile app.",
-    stack: ["FastAPI", "PostgreSQL", "RAG"] },
+  { t: "BidIQ", d: "An internal RAG tool that drafts proposals for job postings, grounded in past project write-ups, and answers a client's follow-up questions the same way. Every claim must trace to a retrieved card, the app refuses to cite a card it never retrieved, and it flags low confidence instead of guessing. Voyage AI embeddings and pgvector power retrieval, with access labels enforced in the SQL query itself. FastAPI and asyncpg on the backend, Next.js on the frontend, with a retrieval test suite.",
+    stack: ["FastAPI", "Next.js", "pgvector", "RAG", "PostgreSQL", "Voyage AI"] },
+  { t: "RemedAI", d: "The AI backend for a health and wellness mobile app. Gemini builds personalised weekly remedy plans, and a chat assistant lets users give 1–5 feedback on recipes, ask for alternatives and discuss their plan. Their preferences are saved and shape the next week's plan. Built as 17 Supabase Edge Functions with Postgres, rate-limited AI endpoints, subscription tiers and a Shopify book-purchase to premium-access flow.",
+    stack: ["Supabase", "PostgreSQL", "Prisma", "TypeScript", "Gemini", "Shopify"] },
   { t: "Funnel platform", d: "An in-house funnel platform with admin apps and dashboards. Migrated the page builder from GrapesJS to Craft.js.",
     stack: ["React", "Next.js", "TypeScript"] },
   { t: "Attribution & reporting", d: "UTM and click-ID passthrough, Meta Pixel vs CAPI, MER reporting and BigQuery pipelines. Traced a ROAS gap to Windsor exports.",
     stack: ["BigQuery", "SQL", "GTM", "Shopify", "Google Ads"] },
-  { t: "AIDO HQ integrations", d: "OAuth for Meta, LinkedIn, X, Pinterest and Google Business Profile, plus Stripe webhooks and Connect.",
-    stack: ["OAuth", "Stripe", "TypeScript"] },
   { t: "Postgres hardening", d: "RLS migrations and security reviews, performance tuning and connection-pool fixes between Vercel and Supabase.",
     stack: ["PostgreSQL", "Supabase", "Vercel", "SQL"] },
   { t: "Flipkart-style backend", d: "An e-commerce backend I designed and wrote myself in Flask. Still my strongest hands-on backend project.",
     stack: ["Flask", "Python", "SQL"] },
   { t: "ChronoGuard", d: "A system for diagnosing chronic diseases using machine learning algorithms, built as my final-year college project. I led a team of 5.",
     stack: ["Machine Learning", "Jupyter"] },
-  { t: "Recipe generator", d: "An AI recipe generator with an admin app.",
-    stack: ["React", "Claude"] },
+  { t: "Recipe generator", d: "An internal admin app that generates health-focused recipes with Gemini. Each recipe goes through a pipeline: pick varied meal types, generate, rewrite to sound natural, validate for health relevance and cookability, then create ingredient and dish images. Reviewers approve recipes and set them FREE or PREMIUM from a filterable dashboard, with batch generation. I also built the image pipeline that cut S3 storage from 1.77 GB to 384 MB across 957 images.",
+    stack: ["Next.js", "Gemini", "Prisma", "PostgreSQL", "AWS S3", "Clerk"] },
 ];
 const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
 $("grid").innerHTML = PROJECTS.map((p, i) => `
